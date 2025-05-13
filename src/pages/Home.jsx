@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import MovieList from '../components/MovieList';
 
@@ -13,7 +12,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <div className='container'>
       <h1>Lista dei Film</h1>
       <MovieList movies={movies} />
     </div>
