@@ -8,14 +8,19 @@ export default function MovieDetail() {
 
   useEffect(() => {
     axios.get(`http://localhost:1229/movies/${id}`)
-      .then((response) => setMovie(response.data))
+      .then((response) => {
+        setMovie(response.data)
+        console.log(response);
+      })
       .catch((error) => console.error('Errore nel recupero del film:', error));
   }, [id]);
 
-  return (
-    <div>
-      <h1>{movie.title}</h1>
-      <div>{movie.description}</div>
-    </div>
-  );
+  console.log(movie);
+
+  // return (
+  //   // <div>
+  //   //   <h1>{movie.title}</h1>
+  //   //   <div>{movie.abstract}</div>
+  //   // </div>
+  // );
 };
