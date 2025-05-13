@@ -6,8 +6,8 @@ export default function generateStars(rating) {
   const emptyStars = 5 - fullStars - halfStar;
 
   return [
-    ...Array(fullStars).fill(<i className='fa-solid fa-star'></i>),
-    ...Array(halfStar).fill(<i className="fa-solid fa-star-half-stroke"></i>),
-    ...Array(emptyStars).fill(<i className='fa-regular fa-star'></i>)
+    ...Array(fullStars).fill(<i className='fa-solid fa-star text-warning'></i>),
+    ...Array(halfStar).fill(<i className='fa-solid fa-star-half-stroke text-warning'></i>),
+    ...Array(emptyStars).fill(<i className='fa-regular fa-star text-warning'></i>)
   ].map((star, index) => React.cloneElement(star, { key: index }));
 };
