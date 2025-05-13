@@ -4,23 +4,18 @@ import axios from 'axios';
 
 export default function MovieDetail() {
   const { id } = useParams();
-  const [movie, setMovie] = useState(null);
+  const [movie, setMovie] = useState({});
 
   useEffect(() => {
     axios.get(`http://localhost:1229/movies/${id}`)
-      .then((response) => {
-        setMovie(response.data)
-        console.log(response);
-      })
+      .then((response) => setMovie(response.data))
       .catch((error) => console.error('Errore nel recupero del film:', error));
   }, [id]);
 
-  console.log(movie);
-
-  // return (
-  //   // <div>
-  //   //   <h1>{movie.title}</h1>
-  //   //   <div>{movie.abstract}</div>
-  //   // </div>
-  // );
+  return (
+    <div>
+      <h1>{movie.title}</h1>
+      <div>{movie.abstract}</div>
+    </div>
+  );
 };
