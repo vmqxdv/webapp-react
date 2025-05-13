@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import MovieDetails from '../components/MovieDetails';
 
 export default function MovieDetail() {
   const { id } = useParams();
@@ -13,9 +14,8 @@ export default function MovieDetail() {
   }, [id]);
 
   return (
-    <div>
-      <h1>{movie.title}</h1>
-      <div>{movie.abstract}</div>
+    <div className='container'>
+      <MovieDetails movie={movie} />
     </div>
   );
 };
