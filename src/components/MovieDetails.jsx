@@ -1,7 +1,7 @@
 import renderStars from '../utils/renderStars';
 import AddNewReview from './AddNewReview';
 
-export default function MovieDetail({ movie }) {
+export default function MovieDetail({ movie, onReviewAdded }) {
   const { title, director, release_year, abstract, imagePath, average_vote, reviews } = movie;
 
   if (!reviews) return <div>Caricamento...</div>;
