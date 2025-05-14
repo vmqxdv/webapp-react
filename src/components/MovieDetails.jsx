@@ -1,4 +1,5 @@
 import renderStars from '../utils/renderStars';
+import AddNewReview from './AddNewReview';
 
 export default function MovieDetail({ movie }) {
   const { title, director, release_year, abstract, imagePath, average_vote, reviews } = movie;
@@ -55,6 +56,8 @@ export default function MovieDetail({ movie }) {
           {reviewsList}
         </ul>
       </div>
+
+      <AddNewReview movieId={movie.id} />
     </>
   )
 };
