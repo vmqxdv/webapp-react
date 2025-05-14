@@ -5,9 +5,17 @@ export default function MovieDetail({ movie }) {
 
   if (!reviews) return <div>Caricamento...</div>;
 
+  const formatDate = date => {
+    return new Date(date).toLocaleDateString('it-IT', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+  };
+
   const renderReviewDate = (created, updated) => {
-    if (created === updated) return new Date(created).toLocaleDateString();
-    return new Date(updated).toLocaleDateString();
+    if (created === updated) return formatDate(created);
+    return formatDate(updated);
   };
 
   const reviewsList = reviews.map((rev, i) =>
