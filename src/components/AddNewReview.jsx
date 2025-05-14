@@ -13,9 +13,10 @@ export default function AddNewReview({ movieId }) {
   };
 
   const RenderReviewStars = () => {
+    const current = hoverRating !== 0 ? hoverRating : rating;
     return [
-      ...Array(rating || hoverRating).fill(true),
-      ...Array(5 - (rating || hoverRating)).fill(false)
+      ...Array(current).fill(true),
+      ...Array(5 - current).fill(false)
     ].map((filled, i) => (
       <span
         key={i + 1}
