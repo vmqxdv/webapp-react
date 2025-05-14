@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function AddNewReview({ movieId }) {
   const [author, setAuthor] = useState('');
@@ -9,7 +10,21 @@ export default function AddNewReview({ movieId }) {
   const addReview = (e) => {
     e.preventDefault();
 
-    console.log(author, text, rating);
+    const reviewObj = {
+      name: author,
+      text: text,
+      vote: rating
+    };
+
+    axios.post(`http://localhost:1229/movies/${movieId}/reviews`, reviewObj)
+      .then(response => {
+        console.log('Review added:', response.data);
+        setAuthor('');
+        setText('');
+        setRating(0);
+        setHoverRating(0);
+      })
+      .catch(err => console.log(err));
   };
 
   const RenderReviewStars = () => {
