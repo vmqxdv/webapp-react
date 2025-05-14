@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function AddNewReview({ movieId }) {
+export default function AddNewReview({ movieId, onReviewAdded }) {
   const [author, setAuthor] = useState('');
   const [text, setText] = useState('');
   const [rating, setRating] = useState(0);
@@ -18,7 +18,11 @@ export default function AddNewReview({ movieId }) {
 
     axios.post(`http://localhost:1229/movies/${movieId}/reviews`, reviewObj)
       .then(response => {
+        if (onReviewAdded)
+          onReviewAdded();
+
         console.log('Review added:', response.data);
+
         setAuthor('');
         setText('');
         setRating(0);

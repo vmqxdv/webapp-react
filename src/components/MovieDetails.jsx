@@ -57,7 +57,7 @@ export default function MovieDetail({ movie }) {
         </ul>
       </div>
 
-      <AddNewReview movieId={movie.id} />
+      <AddNewReview movieId={movie.id} onReviewAdded={onReviewAdded} />
     </>
   )
 };
